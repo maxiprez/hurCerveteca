@@ -1,0 +1,259 @@
+---
+const products = [
+  {
+    name: 'Strange Brewing — Todo Nuevo Bajo el Sol',
+    type: 'Red Sour Ale',
+    volume: '750ml',
+    abv: '7.2%',
+    price: '$3.800',
+    badge: 'Destacado',
+    description: 'Birra agria de fermentación mixta con notas de frutas rojas y acidez delicada.',
+    origin: '🇦🇷 Nacional',
+    color: '#c43c3c',
+  },
+  {
+    name: 'Gourler — Craft Lager',
+    type: 'Craft Lager',
+    volume: '473ml',
+    abv: '5.0%',
+    badge: 'Más vendido',
+    description: 'Lager artesanal de fermentación baja. Equilibrada, refrescante y muy tomar.',
+    origin: '🇦🇷 Nacional',
+    color: '#c49a1a',
+  },
+  {
+    name: 'Mula — Gourmet Pack',
+    type: 'Pack regalo',
+    volume: 'x3 botellas',
+    abv: 'varios',
+    price: '$8.500',
+    badge: 'Regalo',
+    description: 'Pack curado con tres estilos diferentes. Ideal para regalar o para explorar.',
+    origin: '🇦🇷 Nacional',
+    color: '#e85ca6',
+  },
+  {
+    name: 'Crafter — Barleywine Imperial',
+    type: 'Imperial Barleywine',
+    volume: '500ml',
+    abv: '10.5%',
+    price: '$2.900',
+    badge: 'Especial',
+    description: 'Estilo imperial con malta caramelizada, toques de frutos secos y cuerpo robusto.',
+    origin: '🇦🇷 Patagonia',
+    color: '#7a4a1a',
+  },
+  {
+    name: 'Banjeboon — Taste of Europe',
+    type: 'Pack importado',
+    volume: 'x4 latas',
+    abv: 'varios',
+    price: '$6.200',
+    badge: 'Importado',
+    description: 'Cuatro latas europeas seleccionadas para conocer los mejores estilos del Viejo Continente.',
+    origin: '🇧🇪 🇩🇪 🇳🇱 Europa',
+    color: '#4a7ab5',
+  },
+  {
+    name: 'Strange Brewing — Borró Durazno',
+    type: 'Fruited Sour',
+    volume: '750ml',
+    abv: '5.8%',
+    price: '$3.200',
+    badge: 'Temporada',
+    description: 'Sour afrutada con durazno natural. Fresca, vibrante y perfecta para el verano.',
+    origin: '🇦🇷 Nacional',
+    color: '#e8a045',
+  },
+];
+---
+
+<section class="featured" id="destacados">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Selección especial</span>
+      <h2 class="section-title">
+        Productos<br /><span class="gold-text">destacados</span>
+      </h2>
+    </div>
+
+    <div class="products-grid">
+      {
+        products.map((p, i) => (
+          <article class="product-card fade-up" style={`--delay: ${i * 0.08}s`}>
+            <div class="product-color-bar" style={`background: ${p.color}`} />
+            <div class="product-header">
+              <span class="product-badge">{p.badge}</span>
+              <span class="product-origin">{p.origin}</span>
+            </div>
+            <div class="product-body">
+              <p class="product-type">{p.type}</p>
+              <h3 class="product-name">{p.name}</h3>
+              <p class="product-desc">{p.description}</p>
+            </div>
+            <div class="product-footer">
+              <div class="product-meta">
+                <span class="meta-tag">{p.volume}</span>
+                <span class="meta-tag">{p.abv} ABV</span>
+              </div>
+              {/* <span class="product-price">{p.price}</span> */}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="products-disclaimer fade-up">
+      * La disponibilidad puede variar. Consultanos por WhatsApp para stock actualizado.
+    </p>
+  </div>
+</section>
+
+<style>
+  .featured {
+    background: var(--dark);
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .gold-text {
+    color: var(--gold);
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .product-card {
+    background: var(--dark-2);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    animation-delay: var(--delay);
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 160, 23, 0.3);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .product-color-bar {
+    height: 3px;
+    transition: height 0.3s;
+  }
+
+  .product-card:hover .product-color-bar {
+    height: 5px;
+  }
+
+  .product-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem 0.5rem;
+  }
+
+  .product-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(212, 160, 23, 0.15);
+    color: var(--gold);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    border: 1px solid rgba(212, 160, 23, 0.3);
+  }
+
+  .product-origin {
+    font-size: 0.75rem;
+    color: var(--gray);
+  }
+
+  .product-body {
+    padding: 0.5rem 1.25rem 1rem;
+    flex: 1;
+  }
+
+  .product-type {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 0.4rem;
+  }
+
+  .product-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--white);
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+  }
+
+  .product-desc {
+    font-size: 0.8rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .product-footer {
+    padding: 0.75rem 1.25rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: auto;
+  }
+
+  .product-meta {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .meta-tag {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    background: var(--dark-3);
+    color: var(--gray-light);
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+  }
+
+  .product-price {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+
+  .products-disclaimer {
+    font-size: 0.75rem;
+    color: var(--gray);
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

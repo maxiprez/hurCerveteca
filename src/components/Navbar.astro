@@ -1,0 +1,196 @@
+---
+---
+
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="/images/logo_hur.webp" alt="Hur Cerveteca" class="logo-img" />
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+      <li><a href="#categorias" class="nav-link">Productos</a></li>
+      <li><a href="#destacados" class="nav-link">Destacados</a></li>
+      <li><a href="#ubicacion" class="nav-link">Dónde estamos</a></li>
+      <li>
+        <a
+          href="https://wa.me/5491171917940"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary nav-cta"
+        >
+          WhatsApp
+        </a>
+      </li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.25rem 0;
+    transition: background 0.4s ease, padding 0.4s ease;
+  }
+
+  .navbar.scrolled {
+    background: rgba(10, 10, 10, 0.96);
+    backdrop-filter: blur(16px);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(212, 160, 23, 0.15);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(1.1);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    transition: color var(--transition);
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width var(--transition);
+  }
+
+  .nav-link:hover {
+    color: var(--gold);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-cta {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.75rem;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--cream);
+    transition: var(--transition);
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  @media (max-width: 900px) {
+    .hamburger {
+      display: flex;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(320px, 80vw);
+      height: 100vh;
+      background: var(--dark);
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 2rem;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-left: 1px solid rgba(212, 160, 23, 0.2);
+    }
+
+    .nav-links.open {
+      right: 0;
+    }
+
+    .nav-link {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+  });
+
+  hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks?.classList.toggle('open');
+  });
+
+  navLinks?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      hamburger?.classList.remove('active');
+      navLinks?.classList.remove('open');
+    });
+  });
+</script>

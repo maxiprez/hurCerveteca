@@ -1,0 +1,216 @@
+---
+const benefits = [
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+    </svg>`,
+    title: 'Selección curada',
+    desc: 'Cada producto en nuestra heladera y en nuestros estantes fue elegido a conciencia. Nada está ahí por casualidad.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+    </svg>`,
+    title: 'Siempre fría',
+    desc: 'Nuestras heladeras especializadas mantienen la temperatura ideal para que tu cerveza llegue perfecta.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+    </svg>`,
+    title: 'Asesoramiento personal',
+    desc: 'No sabés qué llevarte? Te ayudamos a elegir según tu gusto, la ocasión o el presupuesto. Sin vueltas.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+    </svg>`,
+    title: 'Packs y regalos',
+    desc: 'Armamos packs personalizados para cumpleaños, casamientos, eventos empresariales o lo que necesites.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+    </svg>`,
+    title: 'Stock renovado',
+    desc: 'Incorporamos novedades constantemente. Siempre hay algo nuevo para descubrir en cada visita.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+      <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+    </svg>`,
+    title: 'Local a la calle',
+    desc: 'Estamos en Hurlingham, fácil de llegar y con lugar para estacionar.',
+  },
+];
+---
+
+<section class="benefits" id="beneficios">
+  <div class="container">
+    <div class="benefits-inner">
+      <div class="benefits-header fade-up">
+        <span class="section-label">Por qué elegirnos</span>
+        <h2 class="section-title">
+          La experiencia<br /><span class="gold-text">Hur</span>
+        </h2>
+        <p class="section-subtitle">
+          Más que comprar una cerveza: vivir la experiencia de una cerveteca de verdad.
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+        {
+          benefits.map((b, i) => (
+            <div class="benefit-item fade-up" style={`--delay: ${i * 0.08}s`}>
+              <div class="benefit-icon" set:html={b.icon} />
+              <div class="benefit-text">
+                <h3 class="benefit-title">{b.title}</h3>
+                <p class="benefit-desc">{b.desc}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits {
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .benefits::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212, 160, 23, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .benefits-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .benefits-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .gold-text {
+    color: var(--gold);
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .benefit-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background var(--transition);
+    animation-delay: var(--delay);
+  }
+
+  .benefit-item:nth-child(3n) {
+    border-right: none;
+  }
+
+  .benefit-item:nth-last-child(-n+3) {
+    border-bottom: none;
+  }
+
+  .benefit-item:hover {
+    background: var(--dark-2);
+  }
+
+  .benefit-icon {
+    width: 40px;
+    height: 40px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .benefit-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .benefit-title {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .benefit-desc {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 900px) {
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .benefit-item:nth-child(3n) {
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .benefit-item:nth-child(2n) {
+      border-right: none;
+    }
+
+    .benefit-item:nth-last-child(-n+3) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .benefit-item:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .benefit-item {
+      flex-direction: row;
+      border-right: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .benefit-item:nth-child(3n),
+    .benefit-item:nth-child(2n) {
+      border-right: none;
+    }
+
+    .benefit-item:nth-last-child(-n+3),
+    .benefit-item:nth-last-child(-n+2) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .benefit-item:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

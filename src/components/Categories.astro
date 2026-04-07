@@ -1,0 +1,253 @@
+---
+const categories = [
+  {
+    id: 'artesanales',
+    name: 'Cervezas Artesanales',
+    icon: '🍺',
+    description:
+      'Producción independiente, ingredientes naturales y sabores únicos. IPAs, Stouts, Sours, Saisons y mucho más.',
+    highlights: ['IPA / NEIPA', 'Stout / Porter', 'Sour Ale', 'Lager Craft', 'Saison'],
+    accent: '#d4a017',
+    img: '/images/bottles.webp',
+  },
+  {
+    id: 'industriales',
+    name: 'Cervezas Importadas',
+    icon: '🌍',
+    description:
+      'Las mejores etiquetas del mundo, desde las clásicas europeas hasta las innovadoras americanas y japonesas.',
+    highlights: ['Belgicas', 'Alemanas', 'Inglesas', 'Americanas', 'Japonesas'],
+    accent: '#4a90a4',
+    img: '/images/interior1.webp',
+  },
+  // {
+  //   id: 'vinos',
+  //   name: 'Vinos Seleccionados',
+  //   icon: '🍷',
+  //   description:
+  //     'Etiquetas nacionales e importadas elegidas por su calidad y relación precio-valor. Tintos, blancos y espumantes.',
+  //   highlights: ['Malbec', 'Torrontés', 'Cabernet', 'Espumantes', 'Naturales'],
+  //   accent: '#8b2e2e',
+  //   img: '/images/shelf.webp',
+  // },
+  // {
+  //   id: 'otras',
+  //   name: 'Otras Bebidas',
+  //   icon: '✨',
+  //   description:
+  //     'Sidras artesanales, kombuchas, aguas saborizadas y bebidas sin alcohol para cada ocasión.',
+  //   highlights: ['Sidras', 'Kombuchas', 'Gin & Tónica', 'Sin alcohol', 'Gourmet'],
+  //   accent: '#5a8a4a',
+  //   img: '/images/local.webp',
+  // },
+];
+---
+
+<section class="categories" id="categorias">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Lo que encontrás</span>
+      <h2 class="section-title">Nuestras<br /><span class="gold-text">categorías</span></h2>
+      <p class="section-subtitle">
+        Un espacio pensado para que encuentres exactamente lo que buscás — y algo que
+        todavía no sabías que querías.
+      </p>
+    </div>
+
+    <div class="categories-grid">
+      {
+        categories.map((cat, i) => (
+          <article
+            class="cat-card fade-up"
+            style={`--accent: ${cat.accent}; --delay: ${i * 0.1}s`}
+          >
+            <div class="cat-bg">
+              <img src={cat.img} alt={cat.name} />
+              <div class="cat-overlay" />
+            </div>
+            <div class="cat-content">
+              <div class="cat-icon">{cat.icon}</div>
+              <h3 class="cat-name">{cat.name}</h3>
+              <p class="cat-desc">{cat.description}</p>
+              <ul class="cat-highlights">
+                {cat.highlights.map((h) => (
+                  <li>{h}</li>
+                ))}
+              </ul>
+            </div>
+            <div class="cat-corner" />
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .categories {
+    background: var(--black);
+    position: relative;
+  }
+
+  .section-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .gold-text {
+    color: var(--gold);
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cat-card {
+    position: relative;
+    min-height: 340px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: default;
+    transition: transform var(--transition), box-shadow var(--transition);
+    animation-delay: var(--delay);
+  }
+
+  .cat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent);
+  }
+
+  .cat-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .cat-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.25) saturate(0.6);
+    transition: transform 0.6s ease, filter 0.6s ease;
+  }
+
+  .cat-card:hover .cat-bg img {
+    transform: scale(1.06);
+    filter: brightness(0.35) saturate(0.8);
+  }
+
+  .cat-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(10, 10, 10, 0.95) 0%,
+      rgba(10, 10, 10, 0.5) 60%,
+      transparent 100%
+    );
+  }
+
+  .cat-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .cat-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .cat-card:hover .cat-icon {
+    transform: scale(1.15);
+  }
+
+  .cat-name {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+
+  .cat-desc {
+    font-size: 0.85rem;
+    color: var(--gray-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+  }
+
+  .cat-card:hover .cat-desc {
+    max-height: 100px;
+    opacity: 1;
+  }
+
+  .cat-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+  }
+
+  .cat-highlights li {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.625rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 2px;
+    color: var(--cream-dim);
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+  }
+
+  .cat-card:hover .cat-highlights li {
+    background: rgba(var(--accent), 0.15);
+    border-color: var(--accent);
+    color: var(--white);
+  }
+
+  .cat-corner {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 24px;
+    height: 24px;
+    border-top: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+    border-radius: 0 var(--radius) 0 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .cat-card:hover .cat-corner {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cat-card {
+      min-height: 260px;
+    }
+
+    .cat-desc {
+      max-height: 100px;
+      opacity: 1;
+    }
+  }
+</style>

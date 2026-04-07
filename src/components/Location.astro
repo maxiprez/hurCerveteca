@@ -1,0 +1,219 @@
+---
+const horarios = [
+  { dia: 'Martes a Viernes', hora: '17:00 – 23:00' },
+  { dia: 'Sábados', hora: '17:00 – 01:00' },
+  { dia: 'Domingos', hora: '17:00 – 01:00' },
+];
+---
+
+<section class="location" id="ubicacion">
+  <div class="container">
+    <div class="location-grid">
+      <div class="location-info fade-up">
+        <span class="section-label">Dónde estamos</span>
+        <h2 class="section-title">
+          Vení a<br /><span class="gold-text">conocernos</span>
+        </h2>
+        <p class="location-desc">
+          Estamos en la principal avenida de Hurlingham, con fácil acceso en transporte
+          público y lugar para estacionar en la zona.
+        </p>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+              <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Dirección</strong>
+            <span>Av. Vergara 3141, Hurlingham<br />Buenos Aires</span>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+              <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Horarios</strong>
+            <div class="horarios-list">
+              {horarios.map(h => (
+                <div class="horario-row">
+                  <span class="horario-dia">{h.dia}</span>
+                  <span class="horario-hora">{h.hora}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+              <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Contacto directo</strong>
+            <span>WhatsApp: +54 9 11 7191 7940</span>
+          </div>
+        </div>
+
+        <a
+          href="https://wa.me/5491171917940?text=Hola%20Hur!%20Quiero%20consultar%20sobre%20productos."
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary"
+          style="margin-top: 0.5rem; align-self: flex-start;"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.112 1.528 5.836L.057 23.454a.5.5 0 00.611.611l5.618-1.471A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.792 9.792 0 01-4.988-1.363l-.356-.212-3.694.968.987-3.595-.232-.369A9.818 9.818 0 012.182 12C2.182 6.558 6.558 2.182 12 2.182S21.818 6.558 21.818 12 17.442 21.818 12 21.818z"/>
+          </svg>
+          Escribinos por WhatsApp
+        </a>
+      </div>
+
+      <div class="location-map fade-up">
+        <div class="map-wrapper">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.984594750895!2d-58.637654723411366!3d-34.60455105754363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb9004a2aaca9%3A0xb42c2bc4a6ccca6f!2sHur%20Cerveteca!5e0!3m2!1ses-419!2sar!4v1775519066083!5m2!1ses-419!2sar" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-label">
+          <span>📍 Hurlingham, Buenos Aires</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .location {
+    background: var(--dark);
+    overflow: hidden;
+  }
+
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .gold-text {
+    color: var(--gold);
+  }
+
+  .location-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .location-desc {
+    font-size: 0.95rem;
+    color: var(--gray-light);
+    line-height: 1.7;
+  }
+
+  .info-block {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .info-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(212, 160, 23, 0.1);
+    border: 1px solid rgba(212, 160, 23, 0.2);
+    border-radius: var(--radius);
+    display: grid;
+    place-items: center;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    justify-content: center;
+  }
+
+  .info-block > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .info-block strong {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+  }
+
+  .info-block span {
+    font-size: 0.9rem;
+    color: var(--gray-light);
+    line-height: 1.6;
+  }
+
+  .horarios-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.1rem;
+  }
+
+  .horario-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .horario-dia {
+    color: var(--gray-light);
+  }
+
+  .horario-hora {
+    font-weight: 600;
+    color: var(--gold);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+
+  .location-map {
+    position: sticky;
+    top: 100px;
+  }
+
+  .map-wrapper {
+    width: 100%;
+    height: 400px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    filter: grayscale(0.4) contrast(1.1);
+  }
+
+  .map-label {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--gray);
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .location-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .location-map {
+      position: static;
+    }
+  }
+</style>
