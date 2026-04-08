@@ -14,10 +14,11 @@
       <span>Est. 2025 — Hurlingham, Buenos Aires</span>
     </div>
 
-    <h1 class="hero-title">
-      <span class="title-main">HUR</span>
-      <span class="title-sub">CERVETECA</span>
-    </h1>
+    <h1 class="hero-title">Hur cerveteca</h1>
+
+    <div>
+      <img src="/images/logo_hero_hur_2.svg" alt="Hur Cerveteca" class="hero-logo" />
+    </div>
 
     <p class="hero-tagline">
       Tu rincón de cervezas<br />
@@ -140,11 +141,13 @@
   }
 
   .hero-title {
-    display: flex;
-    flex-direction: column;
-    line-height: 0.9;
+   display: none;
+  }
+
+  .hero-logo{
+    max-width: 500px;
+    height: auto;
     margin-bottom: 1.5rem;
-    animation: fadeUp 0.8s ease 0.3s both;
   }
 
   .title-main {
@@ -259,6 +262,10 @@
     }
     .stat-divider {
       height: 28px;
+    }
+
+    .hero-logo {
+      max-width: 250px;
     }
   }
 </style>
